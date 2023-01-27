@@ -14,9 +14,12 @@ const User = mongoose.model("Users", new mongoose.Schema({
     },
     name: {
         type: String,
-        minlength:3,
+        minlength: 3,
+        required: true
     }
 
 
-}))
+}));
+
+exports.User = User;
 
