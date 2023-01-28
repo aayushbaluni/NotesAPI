@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+#Mongodb
+  mongo_db:
+    container_name: db_container
+    image: mongo:latest
+    restart: always
+    ports:
+      - 2717:27017
+    volumes:
+      - mongo_db:/data/db
+
+  api_service:
+    container_name: api
+    build: .
+    ports:
+      - 3000:3000
+    depends_on:
+      - mongo_db
+
+volumes:
+  mongo_db: {}

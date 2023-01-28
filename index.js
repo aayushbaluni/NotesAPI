@@ -5,8 +5,13 @@ const notes = require('./routes/notes');
 const login = require("./routes/login");
 const register = require('./routes/register');
 const app = express();
+
+
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
+
 mongoose.set('strictQuery', true);
-mongoose.connect("mongodb://localhost/notes")
+mongoose.connect("mongodb://mongo_db:27017/Notes")
     .then(() => console.log("Connected to Database"))
     .catch((err) => console.log(err));
 app.listen(3000, ()=>{
